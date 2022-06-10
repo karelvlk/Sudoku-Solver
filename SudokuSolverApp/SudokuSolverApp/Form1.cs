@@ -33,10 +33,10 @@ namespace SudokuSolverApp
                 { 0, 0, 5, 2, 0, 6, 3, 0, 0 }
             };*/
 
-            int[,] board = new int[,]
+            int[,] board1= new int[,]
             {
-                { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-                { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 5, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 0, 5, 0, 0, 0, 0, 0, 0, 0 },
                 { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                 { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
                 { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -47,7 +47,10 @@ namespace SudokuSolverApp
 
             };
             Console.WriteLine("IS IT POSSIBLE TO SOLVE");
-            Console.WriteLine(solver.SolveByBacktracking(board));
+            Tuple<bool, int[,]> result = solver.SolveAllStepsByBT(board1);
+            int[,] board = result.Item2;
+            Console.WriteLine(result.Item1);
+
             for (int i = 0; i < 9; i++)
             {
                 for (int j = 0; j < 9; j++)

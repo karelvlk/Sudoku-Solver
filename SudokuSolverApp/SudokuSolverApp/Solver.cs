@@ -8,96 +8,8 @@ namespace SudokuSolverApp
 {
     class Solver
     {
-        private bool CanBePlacedInHorizontalLine(int[,] board, int[] position, int number)
-        {
-            for (int i = 0; i < board.GetLength(0); i++)
-            {
-                if (board[position[0], i] == number)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+        private Validator validator = new Validator();
 
-        private bool CanBePlacedInVerticalLine(int[,] board, int[] position, int number)
-        {
-            for (int i = 0; i < board.GetLength(0); i++)
-            {
-                if (board[i, position[1]] == number)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        private int GetStartLine(int[] pos)
-        {
-            if (pos[0] < 3)
-            {
-                return 0;
-            }
-            else if (pos[0] < 6)
-            {
-                return 3;
-            }
-            else
-            {
-                return 6;
-            }
-        }
-
-        private int GetStartColumn(int[] pos)
-        {
-            if (pos[1] < 3)
-            {
-                return 0;
-            }
-            else if (pos[1] < 6)
-            {
-                return 3;
-            }
-            else
-            {
-                return 6;
-            }
-        }
-
-        private bool CanBePlacedIn3x3Box(int[,] board, int[] position, int number)
-        {
-            int startLine = GetStartLine(position);
-            int startColumn = GetStartColumn(position);
-
-            for (int line = 0; line < 3; line++)
-            {
-                for (int column = 0; column < 3; column++)
-                {
-                    if (board[line+startLine, column+startColumn] == number)
-                    {
-                        return false;
-                    }
-                }
-            }
-            return true;
-        }
-
-        public bool CanTheNumberBePlaced(int[,] board, int[] currentChangedPosition, int num)
-        {
-            if (
-                CanBePlacedInHorizontalLine(board, currentChangedPosition, num) &&
-                CanBePlacedInVerticalLine(board, currentChangedPosition, num) &&
-                CanBePlacedIn3x3Box(board, currentChangedPosition, num)
-            )
-            {
-                return true;
-            } 
-            else
-            {
-                return false;
-            }
-        }
-   
         public int[] GetEmptyPosition(int[,] board)
         {
             int row = -1;
@@ -118,6 +30,28 @@ namespace SudokuSolverApp
             return new int[] { row, col };
         }
 
+        public Tuple<bool, int[,]> SolveAllStepsByBT(int[,] board)
+        {
+            int[,] solvedBoard = new int[9, 9];
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    solvedBoard[i, j] = board[i, j];
+                }
+            }
+
+            if (validator.IsBoardValid(board) && SolveByBacktracking(solvedBoard))
+            {
+                return new Tuple<bool, int[,]>(true, solvedBoard);
+            } 
+            else
+            {
+
+                return new Tuple<bool, int[,]>(false, solvedBoard);
+            }
+        }
+
         public bool SolveByBacktracking(int[,] board)
         {
             int[] emptyPosition = GetEmptyPosition(board);
@@ -133,7 +67,7 @@ namespace SudokuSolverApp
 
                 for (int num = 1; num <= 9; num++)
                 {
-                    if (CanTheNumberBePlaced(board, new int[] { row, col }, num))
+                    if (validator.CanTheNumberBePlaced(board, new int[] { row, col }, num))
                     {
                         board[row, col] = num;
                         if (SolveByBacktracking(board))
