@@ -43,13 +43,15 @@ namespace SudokuSolverApp
             this.HintBtn = new System.Windows.Forms.Button();
             this.CheckBtn = new System.Windows.Forms.Button();
             this.SolveBtn = new System.Windows.Forms.Button();
+            this.BackToMenuButton = new System.Windows.Forms.Button();
+            this.InfoBox = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 664);
+            this.button1.Location = new System.Drawing.Point(12, 353);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(185, 53);
+            this.button1.Size = new System.Drawing.Size(41, 53);
             this.button1.TabIndex = 0;
             this.button1.Text = "TEST BUTTON";
             this.button1.UseVisualStyleBackColor = true;
@@ -57,7 +59,7 @@ namespace SudokuSolverApp
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Play", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.Font = new System.Drawing.Font("Play", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBox1.Location = new System.Drawing.Point(267, 94);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -120,6 +122,7 @@ namespace SudokuSolverApp
             // EasyOption
             // 
             this.EasyOption.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.EasyOption.Checked = true;
             this.EasyOption.Font = new System.Drawing.Font("Play", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.EasyOption.ForeColor = System.Drawing.Color.Aqua;
             this.EasyOption.Location = new System.Drawing.Point(447, 220);
@@ -130,6 +133,7 @@ namespace SudokuSolverApp
             this.EasyOption.Text = "Easy";
             this.EasyOption.UseVisualStyleBackColor = false;
             this.EasyOption.Visible = false;
+            this.EasyOption.CheckedChanged += new System.EventHandler(this.EasyOption_CheckedChanged);
             // 
             // MediumOption
             // 
@@ -144,6 +148,7 @@ namespace SudokuSolverApp
             this.MediumOption.Text = "Medium";
             this.MediumOption.UseVisualStyleBackColor = false;
             this.MediumOption.Visible = false;
+            this.MediumOption.CheckedChanged += new System.EventHandler(this.MediumOption_CheckedChanged);
             // 
             // HardOption
             // 
@@ -158,6 +163,7 @@ namespace SudokuSolverApp
             this.HardOption.Text = "Hard";
             this.HardOption.UseVisualStyleBackColor = false;
             this.HardOption.Visible = false;
+            this.HardOption.CheckedChanged += new System.EventHandler(this.HardOption_CheckedChanged);
             // 
             // ExtremeOption
             // 
@@ -172,6 +178,7 @@ namespace SudokuSolverApp
             this.ExtremeOption.Text = "Extreme";
             this.ExtremeOption.UseVisualStyleBackColor = false;
             this.ExtremeOption.Visible = false;
+            this.ExtremeOption.CheckedChanged += new System.EventHandler(this.ExtremeOption_CheckedChanged);
             // 
             // ContinueBtn
             // 
@@ -185,6 +192,7 @@ namespace SudokuSolverApp
             this.ContinueBtn.Text = "Continue";
             this.ContinueBtn.UseVisualStyleBackColor = false;
             this.ContinueBtn.Visible = false;
+            this.ContinueBtn.Click += new System.EventHandler(this.ContinueBtn_Click);
             // 
             // HintBtn
             // 
@@ -198,19 +206,21 @@ namespace SudokuSolverApp
             this.HintBtn.Text = "Hint";
             this.HintBtn.UseVisualStyleBackColor = false;
             this.HintBtn.Visible = false;
+            this.HintBtn.Click += new System.EventHandler(this.HintBtn_Click);
             // 
             // CheckBtn
             // 
             this.CheckBtn.BackColor = System.Drawing.Color.Aqua;
             this.CheckBtn.Font = new System.Drawing.Font("Play", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.CheckBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.CheckBtn.Location = new System.Drawing.Point(731, 677);
+            this.CheckBtn.Location = new System.Drawing.Point(750, 677);
             this.CheckBtn.Name = "CheckBtn";
             this.CheckBtn.Size = new System.Drawing.Size(120, 40);
             this.CheckBtn.TabIndex = 12;
             this.CheckBtn.Text = "Check";
             this.CheckBtn.UseVisualStyleBackColor = false;
             this.CheckBtn.Visible = false;
+            this.CheckBtn.Click += new System.EventHandler(this.CheckBtn_Click);
             // 
             // SolveBtn
             // 
@@ -226,12 +236,39 @@ namespace SudokuSolverApp
             this.SolveBtn.Visible = false;
             this.SolveBtn.Click += new System.EventHandler(this.SolveBtn_Click);
             // 
+            // BackToMenuButton
+            // 
+            this.BackToMenuButton.BackColor = System.Drawing.Color.Aqua;
+            this.BackToMenuButton.Font = new System.Drawing.Font("Play", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BackToMenuButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BackToMenuButton.Location = new System.Drawing.Point(12, 677);
+            this.BackToMenuButton.Name = "BackToMenuButton";
+            this.BackToMenuButton.Size = new System.Drawing.Size(246, 40);
+            this.BackToMenuButton.TabIndex = 15;
+            this.BackToMenuButton.Text = "Back to menu";
+            this.BackToMenuButton.UseVisualStyleBackColor = false;
+            this.BackToMenuButton.Click += new System.EventHandler(this.BackToMenuButton_Click);
+            // 
+            // InfoBox
+            // 
+            this.InfoBox.Font = new System.Drawing.Font("Play", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.InfoBox.ForeColor = System.Drawing.Color.Black;
+            this.InfoBox.Location = new System.Drawing.Point(365, 599);
+            this.InfoBox.Name = "InfoBox";
+            this.InfoBox.Size = new System.Drawing.Size(300, 45);
+            this.InfoBox.TabIndex = 16;
+            this.InfoBox.Text = "Cannot be solved!";
+            this.InfoBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.InfoBox.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.InfoBox);
+            this.Controls.Add(this.BackToMenuButton);
             this.Controls.Add(this.HintBtn);
             this.Controls.Add(this.CheckBtn);
             this.Controls.Add(this.SolveBtn);
@@ -270,6 +307,8 @@ namespace SudokuSolverApp
         private System.Windows.Forms.Button HintBtn;
         private System.Windows.Forms.Button CheckBtn;
         private System.Windows.Forms.Button SolveBtn;
+        private System.Windows.Forms.Button BackToMenuButton;
+        private System.Windows.Forms.Label InfoBox;
     }
 }
 

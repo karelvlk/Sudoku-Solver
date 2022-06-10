@@ -21,6 +21,11 @@ namespace SudokuSolverApp
             InitializeComponent();
         }
 
+        public void HideInfoBox()
+        {
+            this.InfoBox.Visible = false;
+        }
+
         public void SetSolveButtonVisible()
         {
             this.SolveBtn.Visible = true;
@@ -32,6 +37,21 @@ namespace SudokuSolverApp
             this.MediumOption.Visible = true;
             this.HardOption.Visible = true;
             this.ExtremeOption.Visible = true;
+        }
+
+        public void HideGameMenuPage()
+        {
+            this.EasyOption.Visible = false;
+            this.MediumOption.Visible = false;
+            this.HardOption.Visible = false;
+            this.ExtremeOption.Visible = false;
+            this.ContinueBtn.Visible = false;
+        }
+
+        public void ShowGameModeButtons()
+        {
+            this.HintBtn.Visible = true;
+            this.CheckBtn.Visible = true;
         }
 
         public void SetContinueButtonVisible()
@@ -150,13 +170,85 @@ namespace SudokuSolverApp
             gameMode.Start();
         }
 
+        public void SetInfoBoxMessageRed(string text)
+        {
+            this.InfoBox.ForeColor = System.Drawing.Color.Red;
+            this.InfoBox.Text = text;
+            this.InfoBox.Visible = true;
+        }
+
+        public void SetInfoBoxMessageGreen(string text)
+        {
+            this.InfoBox.ForeColor = System.Drawing.Color.Green;
+            this.InfoBox.Text = text;
+            this.InfoBox.Visible = true;
+        }
+
         private void SolveBtn_Click(object sender, EventArgs e)
         {
             Tuple<bool, int[,]> result = solver.SolveAllStepsByBT(board.GetBoard());
             if (result.Item1)
             {
                 board.SetBoard(result.Item2);
+                SetInfoBoxMessageGreen("Successfully solved!");
             }
+            else
+            {
+                SetInfoBoxMessageRed("Cannot be solved!");
+                board.RedAll(true);
+            }
+        }
+
+        private void EasyOption_CheckedChanged(object sender, EventArgs e)
+        {
+            gameMode.SetDifficulty(1);
+        }
+
+        private void MediumOption_CheckedChanged(object sender, EventArgs e)
+        {
+            gameMode.SetDifficulty(2);
+        }
+
+        private void HardOption_CheckedChanged(object sender, EventArgs e)
+        {
+            gameMode.SetDifficulty(3);
+        }
+
+        private void ExtremeOption_CheckedChanged(object sender, EventArgs e)
+        {
+            gameMode.SetDifficulty(4);
+        }
+
+        private void ContinueBtn_Click(object sender, EventArgs e)
+        {
+            gameMode.StartGame();
+        }
+
+        private void BackToMenuButton_Click(object sender, EventArgs e)
+        {
+            this.GameBtn.Visible = true;
+            this.SolverBtn.Visible = true;
+            this.AboutBtn.Visible = true;
+            this.EasyOption.Visible = false;
+            this.MediumOption.Visible = false;
+            this.HardOption.Visible = false;
+            this.ExtremeOption.Visible = false;
+            this.HintBtn.Visible = false;
+            this.CheckBtn.Visible = false;
+            this.ContinueBtn.Visible = false;
+            this.SolveBtn.Visible = false;
+            this.InfoBox.Visible = false;
+            board.HideAndResetBoard();
+        }
+
+        private void CheckBtn_Click(object sender, EventArgs e)
+        {
+            gameMode.Check();
+        }
+
+        private void HintBtn_Click(object sender, EventArgs e)
+        {
+            gameMode.DoHint();
         }
     }
 }
