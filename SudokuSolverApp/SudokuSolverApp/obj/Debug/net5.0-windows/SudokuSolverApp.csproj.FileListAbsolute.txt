@@ -16,3 +16,4 @@ C:\Users\Kája\source\repos\Sudoku-Solver\SudokuSolverApp\SudokuSolverApp\obj\De
 C:\Users\Kája\source\repos\Sudoku-Solver\SudokuSolverApp\SudokuSolverApp\obj\Debug\net5.0-windows\ref\SudokuSolverApp.dll
 C:\Users\Kája\source\repos\Sudoku-Solver\SudokuSolverApp\SudokuSolverApp\obj\Debug\net5.0-windows\SudokuSolverApp.pdb
 C:\Users\Kája\source\repos\Sudoku-Solver\SudokuSolverApp\SudokuSolverApp\obj\Debug\net5.0-windows\SudokuSolverApp.genruntimeconfig.cache
+C:\Users\Kája\source\repos\Sudoku-Solver\SudokuSolverApp\SudokuSolverApp\obj\Debug\net5.0-windows\SudokuSolverApp.Properties.Resources.resources
