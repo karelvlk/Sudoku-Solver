@@ -99,6 +99,8 @@ namespace SudokuSolverApp
                 comparedTo = board.GetFilledBoard();
             }
 
+            List<int[]> possibleChanges = new List<int[]>();
+
 
             for (int i = 0; i < 9; i++)
             {
@@ -106,13 +108,20 @@ namespace SudokuSolverApp
                 {
                     if (board.GetBoard()[i, j] != comparedTo[i, j])
                     {
-                        board.SetValue(comparedTo[i, j], i, j);
-                        board.BlueEntity(i, j);
-                        i = 10;
-                        break;
+                        possibleChanges.Add(new int[] { i, j });
                     }
                     
                 }
+            }
+
+            if (possibleChanges.Count > 0)
+            {
+                int index = rnd.Next(0, possibleChanges.Count);
+                int row = possibleChanges[index][0];
+                int col = possibleChanges[index][1];
+
+                board.SetValue(comparedTo[row, col], row, col);
+                board.BlueEntity(row, col);
             }
         }
     }
