@@ -10,7 +10,7 @@ splněna následující pravidla:
     číslice na řádku se vyskytují právě jednou. 
 *   v žádném sloupci se nesmí vyskytovat jedna číslice více než jednou, tedy všechny 
     číslice ve sloupci se vyskytují právě jednou.
-*   v každém z devíci podpolí o rozměrech 3x3, pro které platí, že každé dvě pole 
+*   v každém z devíti podpolí o rozměrech 3x3, pro které platí, že každé dvě pole 
     jsou disjunktní, platí stejné pravidlo jako pro řádky a sloupce. Tedy v každém
     jednom podpoli se může vyskytovat cifra 1-9 pouze jednou. 
 ```
@@ -78,8 +78,7 @@ jenž umožňuje přesun na úvodní obrazovku. Tato akce však znamená ztrátu
 
 ## Technická dokumentace
 Uživatelské rozhraní této aplikace je vytvořené ve Windows Form, a tudíž aplikace reaguje na události 
-vyvolané uživatelem v objektu `Form.cs`. Zde se po zachycení události přístušným elementem vyvolá událost
-dám do objektu příslušného režimu, ve kterém aplikace aktuálně operuje. Object `Form` se tedy stará pouze 
+vyvolané uživatelem v objektu `Form.cs`. Zde se po zachycení události přístušným elementem vyvolá událost, která je předána do objektu příslušného režimu, ve kterém aplikace aktuálně operuje. Object `Form` se tedy stará pouze 
 o vizualizaci a input uživatele, tudíž obsahuje pouze metody k tomu určené.
 
 Po stuštění aplikace se inicializují objekty, které jsou nezbytně nutné pro fungování aplikace, jsou to:
@@ -109,7 +108,7 @@ Tato třída zajištuje řešení zadaného hracího pole reprezentované 2D pol
 řeší Sudoku je založený principu `backtrackingu`. Tedy algoritmus vyzkouší na prázdné políčko vybrat jednu z cifer 1-9 a
 následně se rekurzivně pokusí dořešit Sudoku. Pokud se mu to nepodaří vrátí se a zkusí další možnou cifru. Pokud žádná 
 další neexistuje, tak algoritmus skončí s návratovou hodnotou `false`, v opačném případě s hodnotou `true`. V jednotlivých
-průchodech se předané 2D pole hracího púole dynamicky mění, a proto si příslušná řešící metoda nejdříve zkopíruje původní
+průchodech se předané 2D pole hracího pole dynamicky mění, a proto si příslušná řešící metoda nejdříve zkopíruje původní
 předané pole do nového, s kterým následně pracuje. Metoda vrátí `Tuple<bool, int[,]>`, kde první hodnota je informace, zda-li
 bylo Sudoku vyřešeno a druhá hodnota je reference na 2D s finálním řešením. 
 
@@ -119,7 +118,7 @@ které nemají takovou účinost
 Algoritmus má exponenciální časovou složitost, avšak na pole 9x9 není nijak omezující.
 
 #### Validator
-Součástí třídy je také třída `Validator`, která obsahuje metody, které kontrolují zdali je hrací pole vyplněno podle pravidel.
+Součástí tříd je také třída `Validator`, která obsahuje metody, které kontrolují zdali je hrací pole vyplněno podle pravidel.
 
 ### GameMode
 Tato třída se stará o logiku hry a propojení `Solver-u` a `Form-u`. Zajišťuje:
@@ -129,7 +128,7 @@ Tato třída se stará o logiku hry a propojení `Solver-u` a `Form-u`. Zajišť
 * Generator
 ``` 
 #### Hint
-Hint funguje na tak, že se nejdříve zkusí z aktuálního stavu dopočítat řešení. Pokud pro lze tak se bude s tímto řešením pracovat,
+Hint funguje na tak, že se nejdříve zkusí z aktuálního stavu dopočítat řešení. Pokud to lze, tak se bude s tímto řešením pracovat,
 pokud ne, tak se vezme už vyplněné hrací pole, který vytvořil generátor hracího pole. Následně se porovnávají aktuální a vybraná
 vyřešená hrací pole a pozice rozdílných políček se ukládají do dynamického `List-u`, ze které random generator vybere jednu a ta se
 následně doplní do řešení.
@@ -141,7 +140,7 @@ Check funguje na stejném principu jako `Hint` jen s rozdílem, že rozdílná p
 Generator je třída obsahující metody na generování hracího pole pro interaktivní hru. Vytvoří se zde nejdříve diagonálně
 3 disjunktní 3x3 podpole. Jejikož tyto podpole jsou na hlavní diagonále, tak se neovcliňují navzájem. Proto je tedy možné 
 opět pomocí random generátoru doplnit hodnoty tak aby v každém podpoli nebyla 2 stejná čísla. To nám zaručí, že budeme mít 9!*3
-různých řešení. Zbylé hodnoty dopočítáme pomocí `Solver-u`. N8sledně opět pomocí random generátoru vymažeme počet políček, který 
+různých řešení. Zbylé hodnoty dopočítáme pomocí `Solver-u`. Následně opět pomocí random generátoru vymažeme počet políček, který 
 závisí na zvolené obtížnosti. 
 
 
