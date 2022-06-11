@@ -29,12 +29,10 @@ namespace SudokuSolverApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.GameBtn = new System.Windows.Forms.Button();
             this.SolverBtn = new System.Windows.Forms.Button();
-            this.AboutBtn = new System.Windows.Forms.Button();
             this.EasyOption = new System.Windows.Forms.RadioButton();
             this.MediumOption = new System.Windows.Forms.RadioButton();
             this.HardOption = new System.Windows.Forms.RadioButton();
@@ -48,16 +46,6 @@ namespace SudokuSolverApp
             this.ResetBtn = new System.Windows.Forms.Button();
             this.DifficultyLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(12, 353);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(41, 53);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "TEST BUTTON";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
@@ -108,18 +96,6 @@ namespace SudokuSolverApp
             this.SolverBtn.Text = "Solver";
             this.SolverBtn.UseVisualStyleBackColor = false;
             this.SolverBtn.Click += new System.EventHandler(this.SolverBtn_Click);
-            // 
-            // AboutBtn
-            // 
-            this.AboutBtn.BackColor = System.Drawing.Color.Aqua;
-            this.AboutBtn.Font = new System.Drawing.Font("Play", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.AboutBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.AboutBtn.Location = new System.Drawing.Point(412, 400);
-            this.AboutBtn.Name = "AboutBtn";
-            this.AboutBtn.Size = new System.Drawing.Size(200, 70);
-            this.AboutBtn.TabIndex = 5;
-            this.AboutBtn.Text = "About";
-            this.AboutBtn.UseVisualStyleBackColor = false;
             // 
             // EasyOption
             // 
@@ -187,7 +163,7 @@ namespace SudokuSolverApp
             this.ContinueBtn.BackColor = System.Drawing.Color.Aqua;
             this.ContinueBtn.Font = new System.Drawing.Font("Play", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ContinueBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ContinueBtn.Location = new System.Drawing.Point(412, 400);
+            this.ContinueBtn.Location = new System.Drawing.Point(412, 402);
             this.ContinueBtn.Name = "ContinueBtn";
             this.ContinueBtn.Size = new System.Drawing.Size(200, 70);
             this.ContinueBtn.TabIndex = 10;
@@ -309,12 +285,10 @@ namespace SudokuSolverApp
             this.Controls.Add(this.HardOption);
             this.Controls.Add(this.MediumOption);
             this.Controls.Add(this.EasyOption);
-            this.Controls.Add(this.AboutBtn);
             this.Controls.Add(this.SolverBtn);
             this.Controls.Add(this.GameBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -324,13 +298,10 @@ namespace SudokuSolverApp
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button GameBtn;
         private System.Windows.Forms.Button SolverBtn;
-        private System.Windows.Forms.Button AboutBtn;
         private System.Windows.Forms.RadioButton EasyOption;
         private System.Windows.Forms.RadioButton MediumOption;
         private System.Windows.Forms.RadioButton HardOption;

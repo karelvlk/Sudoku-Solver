@@ -173,7 +173,6 @@ namespace SudokuSolverApp
         {
             this.SolverBtn.Visible = false;
             this.GameBtn.Visible = false;
-            this.AboutBtn.Visible = false;
         }
 
         private void SolverBtn_Click(object sender, EventArgs e)
@@ -246,7 +245,6 @@ namespace SudokuSolverApp
         {
             this.GameBtn.Visible = true;
             this.SolverBtn.Visible = true;
-            this.AboutBtn.Visible = true;
             this.EasyOption.Visible = false;
             this.DifficultyLabel.Visible = false;
             this.MediumOption.Visible = false;
