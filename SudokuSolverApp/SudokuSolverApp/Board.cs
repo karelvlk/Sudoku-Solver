@@ -32,6 +32,18 @@ namespace SudokuSolverApp
             }
         }
 
+        public void InitializeBoard()
+        {
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    SetValue(0, i, j);
+                    GetEntity(i, j).SetVisibility(true);
+                }
+            }
+        }
+
         public void SetValue(int val, int x, int y)
         {
             board[x, y] = val;

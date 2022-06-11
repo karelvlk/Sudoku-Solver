@@ -56,8 +56,10 @@ namespace SudokuSolverApp
 
         public void Start()
         {
+            this.form.SetEasyOptionCheck(true);
             this.form.SetModeButtonsVisible();
             this.form.SetContinueButtonVisible();
+            this.form.SetVisibilityBackToMenu(true);
         }
 
         public void Check()

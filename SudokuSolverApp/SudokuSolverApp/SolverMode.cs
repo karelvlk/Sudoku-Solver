@@ -19,20 +19,20 @@ namespace SudokuSolverApp
 
         private void InitializeBoard()
         {
-            for (int i = 0; i < 9; i++)
-            {
-                for (int j = 0; j < 9; j++)
-                {
-                    board.SetValue(0, i, j);
-                    board.GetEntity(i, j).SetVisibility(true);
-                }
-            }
+            board.InitializeBoard();
         }
         public void Start()
         {
             this.form.SetSolveButtonVisible();
+            this.form.SetVisibilityResetBtn(true);
+            this.form.SetVisibilityBackToMenu(true);
             InitializeBoard();
             
+        }
+
+        public void Reset()
+        {
+            InitializeBoard();
         }
     }
 }

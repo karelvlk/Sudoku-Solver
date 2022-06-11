@@ -45,6 +45,8 @@ namespace SudokuSolverApp
             this.SolveBtn = new System.Windows.Forms.Button();
             this.BackToMenuButton = new System.Windows.Forms.Button();
             this.InfoBox = new System.Windows.Forms.Label();
+            this.ResetBtn = new System.Windows.Forms.Button();
+            this.DifficultyLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
@@ -247,6 +249,7 @@ namespace SudokuSolverApp
             this.BackToMenuButton.TabIndex = 15;
             this.BackToMenuButton.Text = "Back to menu";
             this.BackToMenuButton.UseVisualStyleBackColor = false;
+            this.BackToMenuButton.Visible = false;
             this.BackToMenuButton.Click += new System.EventHandler(this.BackToMenuButton_Click);
             // 
             // InfoBox
@@ -261,12 +264,41 @@ namespace SudokuSolverApp
             this.InfoBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.InfoBox.Visible = false;
             // 
+            // ResetBtn
+            // 
+            this.ResetBtn.BackColor = System.Drawing.Color.Aqua;
+            this.ResetBtn.Font = new System.Drawing.Font("Play", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ResetBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ResetBtn.Location = new System.Drawing.Point(750, 677);
+            this.ResetBtn.Name = "ResetBtn";
+            this.ResetBtn.Size = new System.Drawing.Size(246, 40);
+            this.ResetBtn.TabIndex = 17;
+            this.ResetBtn.Text = "Reset";
+            this.ResetBtn.UseVisualStyleBackColor = false;
+            this.ResetBtn.Visible = false;
+            this.ResetBtn.Click += new System.EventHandler(this.ResetBtn_Click);
+            // 
+            // DifficultyLabel
+            // 
+            this.DifficultyLabel.Font = new System.Drawing.Font("Play", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.DifficultyLabel.ForeColor = System.Drawing.Color.Aqua;
+            this.DifficultyLabel.Location = new System.Drawing.Point(0, 126);
+            this.DifficultyLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.DifficultyLabel.Name = "DifficultyLabel";
+            this.DifficultyLabel.Size = new System.Drawing.Size(1010, 50);
+            this.DifficultyLabel.TabIndex = 18;
+            this.DifficultyLabel.Text = "Choose difficulty";
+            this.DifficultyLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DifficultyLabel.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.DifficultyLabel);
+            this.Controls.Add(this.ResetBtn);
             this.Controls.Add(this.InfoBox);
             this.Controls.Add(this.BackToMenuButton);
             this.Controls.Add(this.HintBtn);
@@ -309,6 +341,8 @@ namespace SudokuSolverApp
         private System.Windows.Forms.Button SolveBtn;
         private System.Windows.Forms.Button BackToMenuButton;
         private System.Windows.Forms.Label InfoBox;
+        private System.Windows.Forms.Button ResetBtn;
+        private System.Windows.Forms.Label DifficultyLabel;
     }
 }
 

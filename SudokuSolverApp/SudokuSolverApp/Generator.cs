@@ -81,6 +81,5 @@ namespace SudokuSolverApp
             
             return new Tuple<int[,], int[,]>(board, filled);
         }
-
     }
 }

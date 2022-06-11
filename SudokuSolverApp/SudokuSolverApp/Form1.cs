@@ -21,6 +21,22 @@ namespace SudokuSolverApp
             InitializeComponent();
         }
 
+        public void SetEasyOptionCheck(bool isChecked)
+        {
+            this.EasyOption.Checked = isChecked;
+            gameMode.SetDifficulty(1);
+        } 
+
+        public void SetVisibilityResetBtn(bool isVisible)
+        {
+            this.ResetBtn.Visible = isVisible;
+        }
+
+        public void SetVisibilityBackToMenu(bool isVisible)
+        {
+            this.BackToMenuButton.Visible = isVisible;
+        }
+
         public void HideInfoBox()
         {
             this.InfoBox.Visible = false;
@@ -33,6 +49,7 @@ namespace SudokuSolverApp
 
         public void SetModeButtonsVisible()
         {
+            this.DifficultyLabel.Visible = true;
             this.EasyOption.Visible = true;
             this.MediumOption.Visible = true;
             this.HardOption.Visible = true;
@@ -41,6 +58,7 @@ namespace SudokuSolverApp
 
         public void HideGameMenuPage()
         {
+            this.DifficultyLabel.Visible = false;
             this.EasyOption.Visible = false;
             this.MediumOption.Visible = false;
             this.HardOption.Visible = false;
@@ -230,6 +248,7 @@ namespace SudokuSolverApp
             this.SolverBtn.Visible = true;
             this.AboutBtn.Visible = true;
             this.EasyOption.Visible = false;
+            this.DifficultyLabel.Visible = false;
             this.MediumOption.Visible = false;
             this.HardOption.Visible = false;
             this.ExtremeOption.Visible = false;
@@ -238,6 +257,8 @@ namespace SudokuSolverApp
             this.ContinueBtn.Visible = false;
             this.SolveBtn.Visible = false;
             this.InfoBox.Visible = false;
+            this.ResetBtn.Visible = false;
+            this.BackToMenuButton.Visible = false;
             board.HideAndResetBoard();
         }
 
@@ -249,6 +270,11 @@ namespace SudokuSolverApp
         private void HintBtn_Click(object sender, EventArgs e)
         {
             gameMode.DoHint();
+        }
+
+        private void ResetBtn_Click(object sender, EventArgs e)
+        {
+            solverMode.Reset();
         }
     }
 }
