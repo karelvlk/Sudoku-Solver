@@ -83,31 +83,5 @@ namespace SudokuSolverApp
                 return false;
             }
         }
-
-        public int SolveByBacktrackingPOS(int[,] board, int count)
-        {
-            int[] emptyPosition = GetEmptyPosition(board);
-            if (emptyPosition[0] == -1 && emptyPosition[1] == -1)
-            {
-                return 1 + count;
-            }
-            else
-            {
-                // Backtrack
-                int row = emptyPosition[0];
-                int col = emptyPosition[1];
-
-                for (int num = 1; num <= 9; num++)
-                {
-                    if (validator.CanTheNumberBePlaced(board, new int[] { row, col }, num))
-                    {
-                        board[row, col] = num;
-                        count = SolveByBacktrackingPOS(board, count);
-                    }
-                }
-                board[row, col] = 0;
-                return count;
-            }
-        }
     }
 }

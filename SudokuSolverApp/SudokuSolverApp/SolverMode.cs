@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SudokuSolverApp
 {
@@ -10,6 +6,7 @@ namespace SudokuSolverApp
     {
         Form1 form;
         Board board;
+        Solver solver = new Solver();
 
         public SolverMode(Form1 form, Board board)
         {
@@ -27,7 +24,21 @@ namespace SudokuSolverApp
             this.form.SetVisibilityResetBtn(true);
             this.form.SetVisibilityBackToMenu(true);
             InitializeBoard();
-            
+        }
+
+        public void Solve()
+        {
+            Tuple<bool, int[,]> result = solver.SolveAllStepsByBT(board.GetBoard());
+            if (result.Item1)
+            {
+                board.SetBoard(result.Item2);
+                form.SetInfoBoxMessageGreen("Successfully solved!");
+            }
+            else
+            {
+                form.SetInfoBoxMessageRed("Cannot be solved!");
+                board.RedAll(true);
+            }
         }
 
         public void Reset()

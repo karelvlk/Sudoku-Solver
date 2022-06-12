@@ -169,17 +169,11 @@ namespace SudokuSolverApp
 
         public bool IsBoardValid(int[,] board)
         {
-            if (AreVerticalLinesValid(board) &&
+            return (
+                AreVerticalLinesValid(board) &&
                 AreHorizontalLinesValid(board) &&
                 Are3x3BoxesValid(board)
-            )
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            );
         }
     }
 }

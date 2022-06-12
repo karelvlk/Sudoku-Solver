@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SudokuSolverApp
 {
@@ -76,7 +73,7 @@ namespace SudokuSolverApp
             }
             else
             {
-                return GenerateSudokuBoard(numOfEmptySpaces); // recursion ??
+                return GenerateSudokuBoard(numOfEmptySpaces); // recursion
             }
             
             return new Tuple<int[,], int[,]>(board, filled);

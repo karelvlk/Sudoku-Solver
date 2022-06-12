@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SudokuSolverApp
 {
@@ -43,10 +40,12 @@ namespace SudokuSolverApp
                 default:
                     break;
             }
+
             Tuple<int[,], int[,]> result = generator.GenerateSudokuBoard(emptySpaces);
+            // Item1 = board with empty spaces
+            // Item2 = board with no empty spaces
             board.SetBoardInit(result.Item1);
             board.SetFilledBoard(result.Item2);
-
         }
 
         public void SetDifficulty(int difficulty)
@@ -67,6 +66,7 @@ namespace SudokuSolverApp
             Tuple<bool, int[,]> result = solver.SolveAllStepsByBT(board.GetBoard());
             if (result.Item1)
             {
+                // argument false means that method sets green color to only filled entities 
                 board.GreenAll(false);
             } 
             else
@@ -102,7 +102,6 @@ namespace SudokuSolverApp
             }
 
             List<int[]> possibleChanges = new List<int[]>();
-
 
             for (int i = 0; i < 9; i++)
             {

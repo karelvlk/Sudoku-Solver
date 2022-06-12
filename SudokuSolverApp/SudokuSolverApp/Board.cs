@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SudokuSolverApp
@@ -22,7 +18,6 @@ namespace SudokuSolverApp
 
         public void GenerateBoard()
         {
-
             for (int i = 0; i < 9; i++)
             {
                 for (int j = 0; j < 9; j++)
@@ -350,7 +345,6 @@ namespace SudokuSolverApp
             {
                 this.textBox1.Text = Convert.ToString(value);
             }
-            
         }
     }
 }
