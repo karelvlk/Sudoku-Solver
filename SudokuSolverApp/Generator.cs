@@ -5,7 +5,9 @@ namespace SudokuSolverApp
 {
     class Generator
     {
-        Solver solver = new Solver();
+        SolverBT solver = new SolverBT();
+        PenPaperSolver solverPP = new PenPaperSolver();
+        CrooksSolver solverCK = new CrooksSolver();
         Random rnd = new Random();
 
         private void GenerateDiagonal3x3Box(int[,] board, int idx)
@@ -38,27 +40,56 @@ namespace SudokuSolverApp
             }
         }
 
-        private void RemoveValues(int[,] board, int k)
+        private void RemoveValues(int[,] board, int k, int difficulty)
         {
             for (int i = 0; i < k;)
             {
                 int index = rnd.Next(81);
                 int row = index % 9;
                 int col = (int)index / 9;
+                int val = board[row, col];
                 if (board[row, col] != 0)
                 {
                     board[row, col] = 0;
-                    i++;
+                    if (difficulty == 1)
+                    {
+                        Tuple<bool, int[,]> res = solverPP.SolvePP(board);
+                        if (res.Item1)
+                        {
+                            i++;
+                        }
+                        else
+                        {
+                            board[row, col] = val;
+                        }
+                    } 
+                    else if (difficulty == 2)
+                    {
+                        Tuple<bool, int[,]> res = solverCK.SolveCK(board);
+                        if (res.Item1)
+                        {
+                            i++;
+                        }
+                        else
+                        {
+                            board[row, col] = val;
+                        }
+                    }
+                    else
+                    {
+                        i++;
+                    }
+                    
                 }
             }
         }
 
-        public Tuple<int[,], int[,]> GenerateSudokuBoard(int numOfEmptySpaces)
+        public Tuple<int[,], int[,]> GenerateSudokuBoard(int numOfEmptySpaces, int difficulty)
         {
             int[,] board = new int[9, 9];
             int[,] filled = new int[9, 9];
             GenerateDiagonal3x3Boxes(board);
-            Tuple<bool, int[,]> filledSudoku = solver.SolveAllStepsByBT(board);
+            Tuple<bool, int[,]> filledSudoku = solver.SolveBT(board);
             if (filledSudoku.Item1)
             {
                 board = filledSudoku.Item2;
@@ -69,11 +100,11 @@ namespace SudokuSolverApp
                         filled[i, j] = board[i, j];
                     }
                 }
-                RemoveValues(filledSudoku.Item2, numOfEmptySpaces);
+                RemoveValues(filledSudoku.Item2, numOfEmptySpaces, difficulty);
             }
             else
             {
-                return GenerateSudokuBoard(numOfEmptySpaces); // recursion
+                return GenerateSudokuBoard(numOfEmptySpaces, difficulty); // recursion
             }
             
             return new Tuple<int[,], int[,]>(board, filled);

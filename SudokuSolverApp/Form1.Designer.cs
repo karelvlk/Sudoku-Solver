@@ -36,7 +36,6 @@ namespace SudokuSolverApp
             this.EasyOption = new System.Windows.Forms.RadioButton();
             this.MediumOption = new System.Windows.Forms.RadioButton();
             this.HardOption = new System.Windows.Forms.RadioButton();
-            this.ExtremeOption = new System.Windows.Forms.RadioButton();
             this.ContinueBtn = new System.Windows.Forms.Button();
             this.HintBtn = new System.Windows.Forms.Button();
             this.CheckBtn = new System.Windows.Forms.Button();
@@ -142,21 +141,6 @@ namespace SudokuSolverApp
             this.HardOption.UseVisualStyleBackColor = false;
             this.HardOption.Visible = false;
             this.HardOption.CheckedChanged += new System.EventHandler(this.HardOption_CheckedChanged);
-            // 
-            // ExtremeOption
-            // 
-            this.ExtremeOption.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ExtremeOption.Font = new System.Drawing.Font("Play", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ExtremeOption.ForeColor = System.Drawing.Color.Aqua;
-            this.ExtremeOption.Location = new System.Drawing.Point(447, 340);
-            this.ExtremeOption.Name = "ExtremeOption";
-            this.ExtremeOption.Size = new System.Drawing.Size(130, 30);
-            this.ExtremeOption.TabIndex = 9;
-            this.ExtremeOption.TabStop = true;
-            this.ExtremeOption.Text = "Extreme";
-            this.ExtremeOption.UseVisualStyleBackColor = false;
-            this.ExtremeOption.Visible = false;
-            this.ExtremeOption.CheckedChanged += new System.EventHandler(this.ExtremeOption_CheckedChanged);
             // 
             // ContinueBtn
             // 
@@ -281,7 +265,6 @@ namespace SudokuSolverApp
             this.Controls.Add(this.CheckBtn);
             this.Controls.Add(this.SolveBtn);
             this.Controls.Add(this.ContinueBtn);
-            this.Controls.Add(this.ExtremeOption);
             this.Controls.Add(this.HardOption);
             this.Controls.Add(this.MediumOption);
             this.Controls.Add(this.EasyOption);
@@ -289,6 +272,9 @@ namespace SudokuSolverApp
             this.Controls.Add(this.GameBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -305,7 +291,6 @@ namespace SudokuSolverApp
         private System.Windows.Forms.RadioButton EasyOption;
         private System.Windows.Forms.RadioButton MediumOption;
         private System.Windows.Forms.RadioButton HardOption;
-        private System.Windows.Forms.RadioButton ExtremeOption;
         private System.Windows.Forms.Button ContinueBtn;
         private System.Windows.Forms.Button HintBtn;
         private System.Windows.Forms.Button CheckBtn;

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SudokuSolverApp
 {
-    class Solver
+    class SolverBT
     {
-        private Validator validator = new Validator();
+        private ValidatorBT validator = new ValidatorBT();
 
         public int[] GetEmptyPosition(int[,] board)
         {
@@ -30,7 +30,7 @@ namespace SudokuSolverApp
             return new int[] { row, col };
         }
 
-        public Tuple<bool, int[,]> SolveAllStepsByBT(int[,] board)
+        public Tuple<bool, int[,]> SolveBT(int[,] board)
         {
             int[,] solvedBoard = new int[9, 9];
             for (int i = 0; i < 9; i++)

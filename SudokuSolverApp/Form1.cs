@@ -46,7 +46,6 @@ namespace SudokuSolverApp
             this.EasyOption.Visible = true;
             this.MediumOption.Visible = true;
             this.HardOption.Visible = true;
-            this.ExtremeOption.Visible = true;
         }
 
         public void HideGameMenuPage()
@@ -55,7 +54,6 @@ namespace SudokuSolverApp
             this.EasyOption.Visible = false;
             this.MediumOption.Visible = false;
             this.HardOption.Visible = false;
-            this.ExtremeOption.Visible = false;
             this.ContinueBtn.Visible = false;
         }
 
@@ -131,11 +129,6 @@ namespace SudokuSolverApp
             gameMode.SetDifficulty(3);
         }
 
-        private void ExtremeOption_CheckedChanged(object sender, EventArgs e)
-        {
-            gameMode.SetDifficulty(4);
-        }
-
         private void ContinueBtn_Click(object sender, EventArgs e)
         {
             gameMode.StartGame();
@@ -149,7 +142,6 @@ namespace SudokuSolverApp
             this.DifficultyLabel.Visible = false;
             this.MediumOption.Visible = false;
             this.HardOption.Visible = false;
-            this.ExtremeOption.Visible = false;
             this.HintBtn.Visible = false;
             this.CheckBtn.Visible = false;
             this.ContinueBtn.Visible = false;

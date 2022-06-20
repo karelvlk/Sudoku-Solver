@@ -5,7 +5,7 @@ namespace SudokuSolverApp
 {
     class GameMode
     {
-        Solver solver = new Solver();
+        SolverBT solver = new SolverBT();
         Form1 form;
         Board board;
         int difficulty = 1;
@@ -32,16 +32,13 @@ namespace SudokuSolverApp
                     emptySpaces = rnd.Next(35, 45);
                     break;
                 case 3:
-                    emptySpaces = rnd.Next(45, 54);
-                    break;
-                case 4:
-                    emptySpaces = rnd.Next(55, 63);
+                    emptySpaces = rnd.Next(45, 63);
                     break;
                 default:
                     break;
             }
 
-            Tuple<int[,], int[,]> result = generator.GenerateSudokuBoard(emptySpaces);
+            Tuple<int[,], int[,]> result = generator.GenerateSudokuBoard(emptySpaces, difficulty);
             // Item1 = board with empty spaces
             // Item2 = board with no empty spaces
             board.SetBoardInit(result.Item1);
@@ -63,7 +60,7 @@ namespace SudokuSolverApp
 
         public void Check()
         {
-            Tuple<bool, int[,]> result = solver.SolveAllStepsByBT(board.GetBoard());
+            Tuple<bool, int[,]> result = solver.SolveBT(board.GetBoard());
             if (result.Item1)
             {
                 // argument false means that method sets green color to only filled entities 
@@ -90,7 +87,7 @@ namespace SudokuSolverApp
 
         public void DoHint()
         {
-            Tuple<bool, int[,]> result = solver.SolveAllStepsByBT(board.GetBoard());
+            Tuple<bool, int[,]> result = solver.SolveBT(board.GetBoard());
             int[,] comparedTo;
             if (result.Item1)
             {

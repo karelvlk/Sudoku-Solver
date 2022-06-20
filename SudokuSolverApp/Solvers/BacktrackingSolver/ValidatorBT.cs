@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SudokuSolverApp
 {
-    class Validator
+    class ValidatorBT
     {
         private bool CanBePlacedInHorizontalLine(int[,] board, int[] position, int number)
         {

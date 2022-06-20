@@ -6,7 +6,7 @@ namespace SudokuSolverApp
     {
         Form1 form;
         Board board;
-        Solver solver = new Solver();
+        SolverBT solver = new SolverBT();
 
         public SolverMode(Form1 form, Board board)
         {
@@ -28,7 +28,7 @@ namespace SudokuSolverApp
 
         public void Solve()
         {
-            Tuple<bool, int[,]> result = solver.SolveAllStepsByBT(board.GetBoard());
+            Tuple<bool, int[,]> result = solver.SolveBT(board.GetBoard());
             if (result.Item1)
             {
                 board.SetBoard(result.Item2);
